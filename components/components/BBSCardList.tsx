@@ -18,6 +18,9 @@ const BBSCardList = () => {
       <BBSCard />
       <BBSCard />
       <BBSCard />
+      <BBSCard />
+      <BBSCard />
+      <BBSCard />
     </div>
   );
 };
