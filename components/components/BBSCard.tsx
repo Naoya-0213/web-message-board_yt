@@ -17,22 +17,21 @@ interface BBSDataProps {
 }
 
 const BBSCard = ({ bbsData }: BBSDataProps) => {
+  const { id,title, content, createdAt, username } = bbsData;
 
-  
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{username}</CardDescription>
       </CardHeader>
-      <CardContent>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. A quia
-        asperiores vero fuga ipsam. Optio provident vel debitis nulla ex
-        deleniti eos, dolor, consequatur, laudantium beatae alias consectetur
-        aliquid tempora.
-      </CardContent>
+      <CardContent>{content}</CardContent>
       <CardFooter className="flex justify-between">
-        <Link rel="stylesheet" href={"/bbs-posts/1"} className="text-blue-500">
+        <Link
+          rel="stylesheet"
+          href={`/bbs-posts/${id}`}
+          className="text-blue-500"
+        >
           Read More
         </Link>
       </CardFooter>
