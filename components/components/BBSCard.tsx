@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import {
   Card,
   CardContent,
@@ -11,8 +10,15 @@ import {
 } from "@/components/ui/card";
 
 import Link from "next/link";
+import type { BBSdata } from "@/app/types/types";
 
-const BBSCard = () => {
+interface BBSDataProps {
+  bbsAllData: BBSdata[];
+}
+
+const BBSCard = ({ bbsData }: BBSDataProps) => {
+
+  
   return (
     <Card>
       <CardHeader>
@@ -31,8 +37,6 @@ const BBSCard = () => {
         </Link>
       </CardFooter>
     </Card>
-
- 
   );
 };
 

@@ -1,19 +1,22 @@
 import BBSCardList from "@/components/components/BBSCardList";
-// import { PrismaClient } from "@prisma/client";
+import type { BBSdata } from "./types/types";
 
-// const prisma = new PrismaClient();
-
-export default async function Home() {
-  const response = await fetch("http://localhost:3002/api/post", {
+async function getBBSAllData() {
+  const response = await fetch("http://localhost:3000/api/post", {
     cache: "no-store",
   });
 
-  const bbsAllData = await response.json();
-  console.log(bbsAllData);
+  const bbsAllData: BBSdata = await response.json();
+
+  return bbsAllData;
+}
+
+export default async function Home() {
+  const bbsAlldata = await getBBSAllData();
 
   return (
     <main>
-      <BBSCardList />
+      <BBSCardList bbsAlldata={bbsAlldata} />
     </main>
   );
 }
