@@ -6,17 +6,17 @@ async function getBBSAllData() {
     cache: "no-store",
   });
 
-  const bbsAllData: BBSdata = await response.json();
+  const bbsAllData: BBSdata[] = await response.json();
 
   return bbsAllData;
 }
 
 export default async function Home() {
-  const bbsAlldata = await getBBSAllData();
+  const bbsAllData = await getBBSAllData();
 
   return (
     <main>
-      <BBSCardList bbsAlldata={bbsAlldata} />
+      <BBSCardList bbsAllData={bbsAllData} />
     </main>
   );
 }
