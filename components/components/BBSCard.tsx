@@ -10,14 +10,14 @@ import {
 } from "@/components/ui/card";
 
 import Link from "next/link";
-import type { BBSdata } from "@/app/types/types";
+import type { BBSData } from "@/app/types/types";
 
 interface BBSDataProps {
-  bbsAllData: BBSdata[];
+  bbsData: BBSData;
 }
 
 const BBSCard = ({ bbsData }: BBSDataProps) => {
-  const { id,title, content, createdAt, username } = bbsData;
+  const { id, title, content, createdAt, username } = bbsData;
 
   return (
     <Card>
