@@ -1,17 +1,18 @@
 import type { BBSData } from "@/app/types/types";
 import React from "react";
 
-async function getDetailBBSData() {
-  const response = await fetch("http://localhost:3000/api/post", {
+async function getDetailBBSData(id: number) {
+  const response = await fetch(`http://localhost:3000/api/post/${id}`, {
     cache: "no-store",
   });
 
-  const bbsAllData: BBSData= await response.json();
+  const bbsDetailData: BBSData = await response.json();
 
-  return bbsAllData;
+  return bbsDetailData;
 }
 
-const BBSDetailPage = () => {
+const BBSDetailPage = async ({ params }: { params: { bbsId: number } }) => {
+  const bbsDetailData = await getDetailBBSData(params.bbsId);
   return <div>BBSDetailPage</div>;
 };
 
