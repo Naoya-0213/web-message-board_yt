@@ -1,4 +1,15 @@
 import React from "react";
+
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardFooter,
+//   CardHeader,
+//   CardTitle,
+// } from "@/components/ui/card";
+
+// import Link from "next/link";
 import BBSCard from "./BBSCard";
 import type { BBSData } from "@/app/types/types";
 
