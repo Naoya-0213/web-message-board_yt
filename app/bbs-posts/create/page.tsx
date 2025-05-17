@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Textarea } from "@/components/ui/textarea";
 
 // React-hook-form
 const formSchema = z.object({
@@ -46,7 +47,10 @@ const CreateBBCPage = () => {
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-3 w-1/2 px-7 py-7"
+        >
           {/* ユーザー名 */}
           <FormField
             control={form.control}
@@ -80,18 +84,27 @@ const CreateBBCPage = () => {
           {/* 本文 */}
           <FormField
             control={form.control}
-            name="username"
+            name="content"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>本文</FormLabel>
                 <FormControl>
-                  <Input placeholder="本文を入力" {...field} />
+                  <Textarea
+                    placeholder="投稿内容を入力"
+                    className="resize-none"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button
+            type="submit"
+            className="cursor-pointer bg-slate-950 text-white"
+          >
+            投稿
+          </Button>
         </form>
       </Form>
     </div>
