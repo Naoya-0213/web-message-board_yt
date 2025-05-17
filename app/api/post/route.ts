@@ -2,19 +2,20 @@ import { NextResponse } from "next/server";
 import prisma from "../../../lib/prismaClient";
 
 export async function GET(request: Request) {
-  try {
-    const allBBSPosts = await prisma.post.findMany();
-    return NextResponse.json(allBBSPosts);
-  } catch (error) {
-    return new NextResponse("Internal Server Error", { status: 500 });
-  }
+  const allBBSPosts = await prisma.post.findMany();
+  return NextResponse.json(allBBSPosts);
 }
 
-export async function GET(request: Request) {
-  try {
-    const allBBSPosts = await prisma.post.findMany();
-    return NextResponse.json(allBBSPosts);
-  } catch (error) {
-    return new NextResponse("Internal Server Error", { status: 500 });
-  }
+// Create Postにて 投稿クリック時の実装
+export async function POST(request: Request) {
+  const { username, title, content } = await request.json();
+
+  const Post = await prisma.post.create({
+    data: {
+      username,
+      title,
+      content,
+    },
+  });
+  return NextResponse.json(Post);
 }

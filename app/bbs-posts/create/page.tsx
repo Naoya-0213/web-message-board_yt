@@ -16,6 +16,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Textarea } from "@/components/ui/textarea";
+import { title } from "process";
+import { useRouter } from "next/navigation";
 
 // React-hook-form
 const formSchema = z.object({
@@ -32,6 +34,8 @@ const formSchema = z.object({
 });
 
 const CreateBBCPage = () => {
+  const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,7 +46,22 @@ const CreateBBCPage = () => {
   });
 
   // onSubmit指定
-  async function onSubmit() {}
+  async function onSubmit(value: z.infer<typeof formSchema>) {
+    const { username, title, content } = value;
+    try {
+      await fetch("http://localhost:3000/api/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, title, content }),
+      });
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div>
